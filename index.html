@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="data.js"></script>
+</head>
+
+<body>
+    <div class="content">
+
+    </div>
+
+
+
+    <script>
+        // const data = JSON.parse(dataInfo);
+        // console.log(data);
+        // data.forEach(function (item) {
+        //     console.log(item.setup);
+        // });
+        // 2.
+
+        
+
+        //     data.forEach(item => {
+        //     const par = document.createElement("p");
+        //     par.textContent = item.setup;
+        //     par.style.color = "red";
+        //     contentDiv.appendChild(par);
+
+        //     data.forEach(paragraph => {
+        //         const p = document.createElement("p");
+        //         p.textContent = paragraph.punchline;
+        //         p.style.color = "green";
+        //         contentDiv.appendChild(p);
+        //     });
+        // });
+
+        const contentDiv = document.querySelector('.content');
+
+        fetch('https://official-joke-api.appspot.com/random_joke')
+
+        .then((response) => {
+            return response.json();
+        })
+
+        .then((data) => { 
+                const par = document.createElement("p");
+                par.textContent = data.setup;
+                par.style.color = "red";
+                contentDiv.appendChild(par);
+                const p = document.createElement("p");
+                p.textContent = data.punchline;
+                p.style.color = "green";
+                contentDiv.appendChild(p);
+                const id = document.createElement("p");
+                id.textContent = "Joke number " + '- ' + data.id;
+                contentDiv.appendChild(id);
+        });
+        
+      
+        
+               
+    
+    </script>
+</body>
+
+</html>
